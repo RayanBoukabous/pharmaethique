@@ -2,7 +2,7 @@
  * Configuration et utilitaires pour l'API backend
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://105.96.71.28:9001/api'
 
 export interface Catalogue {
   id: number

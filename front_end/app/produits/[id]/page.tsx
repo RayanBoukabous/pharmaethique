@@ -190,7 +190,7 @@ export default function ProduitDetail({ params }: { params: { id: string } }) {
                             fill
                             className="object-contain group-hover:scale-110 transition-transform duration-300"
                             sizes="96px"
-                            unoptimized={partenaire.logo_url.startsWith('http://localhost:8001')}
+                            unoptimized={partenaire.logo_url.startsWith('http://105.96.71.28:9001')}
                           />
                         </div>
                       ) : (

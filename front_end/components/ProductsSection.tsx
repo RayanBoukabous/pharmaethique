@@ -113,7 +113,7 @@ export default function ProductsSection() {
             <div className="text-center py-20">
               <p className="text-red-500 mb-4">{error}</p>
               <p className="text-gray-600 text-sm">
-                Veuillez vérifier que le backend est accessible sur http://localhost:8001
+                Veuillez vérifier que le backend est accessible sur http://105.96.71.28:9001
               </p>
             </div>
           ) : products.length === 0 ? (
@@ -146,7 +146,7 @@ export default function ProductsSection() {
                             className="object-cover group-hover:scale-110 transition-transform duration-500"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             onError={() => handleImageError(product.id)}
-                            unoptimized={product.image_couverture_url.startsWith('http://localhost:8001')}
+                            unoptimized={product.image_couverture_url.startsWith('http://105.96.71.28:9001')}
                           />
                         ) : (
                           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary-light/10 to-primary-dark/10">

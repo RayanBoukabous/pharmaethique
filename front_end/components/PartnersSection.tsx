@@ -104,7 +104,7 @@ export default function PartnersSection() {
             <div className="text-center py-20">
               <p className="text-red-500 mb-4">{error}</p>
               <p className="text-gray-600 text-sm">
-                Veuillez vérifier que le backend est accessible sur http://localhost:8001
+                Veuillez vérifier que le backend est accessible sur http://105.96.71.28:9001
               </p>
             </div>
           ) : partners.length === 0 ? (
@@ -138,7 +138,7 @@ export default function PartnersSection() {
                             fill
                             className="object-contain group-hover:scale-110 transition-transform duration-300"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            unoptimized={partner.logo_url.startsWith('http://localhost:8001')}
+                            unoptimized={partner.logo_url.startsWith('http://105.96.71.28:9001')}
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-gray-400">
@@ -216,7 +216,7 @@ export default function PartnersSection() {
                             fill
                             className="object-contain group-hover:scale-110 transition-transform duration-300"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            unoptimized={partner.logo_url.startsWith('http://localhost:8001')}
+                            unoptimized={partner.logo_url.startsWith('http://105.96.71.28:9001')}
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-gray-400">

@@ -118,7 +118,7 @@ export default function PartenaireDetail({ params }: { params: { id: string } })
                       alt={partenaire.nom}
                       fill
                       className="object-contain"
-                      unoptimized={partenaire.logo_url.startsWith('http://localhost:8001')}
+                      unoptimized={partenaire.logo_url.startsWith('http://105.96.71.28:9001')}
                     />
                   </div>
                 ) : (
