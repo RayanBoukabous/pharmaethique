@@ -68,7 +68,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [translations])
 
   // Memoize dir value
-  const dir = useMemo(() => language === 'ar' ? 'rtl' : 'ltr', [language])
+  const dir: 'ltr' | 'rtl' = useMemo(() => (language === 'ar' ? 'rtl' : 'ltr'), [language])
 
   // Memoize context value to prevent unnecessary re-renders
   const contextValue = useMemo(
