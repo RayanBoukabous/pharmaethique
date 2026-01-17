@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, ReactNode, useMemo, useCallback } from 'react'
 import frTranslations from '@/locales/fr.json'
 import enTranslations from '@/locales/en.json'
 import arTranslations from '@/locales/ar.json'
@@ -24,37 +24,40 @@ const translationsMap: Record<Language, typeof frTranslations> = {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>('fr')
-  const [translations, setTranslations] = useState<Record<string, any>>(frTranslations)
 
+  // Load language from localStorage on mount
   useEffect(() => {
-    // Load language from localStorage or default to 'fr'
-    const savedLang = localStorage.getItem('language') as Language
-    if (savedLang && ['fr', 'en', 'ar'].includes(savedLang)) {
-      setLanguageState(savedLang)
-      setTranslations(translationsMap[savedLang])
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('language') as Language
+      if (savedLang && ['fr', 'en', 'ar'].includes(savedLang)) {
+        setLanguageState(savedLang)
+      }
     }
   }, [])
 
-  useEffect(() => {
-    // Load translations
-    setTranslations(translationsMap[language])
+  // Get translations based on current language (memoized)
+  const translations = useMemo(() => {
+    return translationsMap[language]
   }, [language])
 
-  const setLanguage = (lang: Language) => {
+  // Update HTML attributes when language changes
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
+      document.documentElement.lang = language
+    }
+  }, [language])
+
+  // Memoize setLanguage to prevent unnecessary re-renders
+  const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang)
-    localStorage.setItem('language', lang)
-    // Update HTML dir attribute
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'
-    document.documentElement.lang = lang
-  }
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', lang)
+    }
+  }, [])
 
-  useEffect(() => {
-    // Set initial dir and lang
-    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
-    document.documentElement.lang = language
-  }, [language])
-
-  const t = (key: string): string => {
+  // Memoize translation function to prevent re-creation on every render
+  const t = useCallback((key: string): string => {
     const keys = key.split('.')
     let value: any = translations
     for (const k of keys) {
@@ -62,12 +65,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       if (value === undefined) return key
     }
     return typeof value === 'string' ? value : key
-  }
+  }, [translations])
 
-  const dir = language === 'ar' ? 'rtl' : 'ltr'
+  // Memoize dir value
+  const dir = useMemo(() => language === 'ar' ? 'rtl' : 'ltr', [language])
+
+  // Memoize context value to prevent unnecessary re-renders
+  const contextValue = useMemo(
+    () => ({ language, setLanguage, t, dir }),
+    [language, setLanguage, t, dir]
+  )
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, dir }}>
+    <LanguageContext.Provider value={contextValue}>
       {children}
     </LanguageContext.Provider>
   )
