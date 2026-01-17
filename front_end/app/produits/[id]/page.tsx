@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Loader2, ChevronRight, ArrowLeft } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { getProduitById, type Produit } from '@/lib/api'
+import { getProduitById, type Produit, getLocalMediaUrl } from '@/lib/api'
 import Link from 'next/link'
 
 // Interface pour les partenaires dans la réponse API (format simplifié retourné par le backend)
@@ -185,12 +185,12 @@ export default function ProduitDetail({ params }: { params: { id: string } }) {
                       {partenaire.logo_url ? (
                         <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-3 sm:mb-4 flex items-center justify-center">
                           <Image
-                            src={partenaire.logo_url}
+                            src={getLocalMediaUrl(partenaire.logo_url) || partenaire.logo_url}
                             alt={partenaire.nom}
                             fill
                             className="object-contain group-hover:scale-110 transition-transform duration-300"
                             sizes="96px"
-                            unoptimized={partenaire.logo_url.startsWith('http://105.96.71.28:9001')}
+                            unoptimized={getLocalMediaUrl(partenaire.logo_url)?.startsWith('http://105.96.71.28:9001') || partenaire.logo_url.startsWith('http://105.96.71.28:9001')}
                           />
                         </div>
                       ) : (

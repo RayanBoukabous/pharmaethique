@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { getProduitsActifs, type Produit } from '@/lib/api'
+import { getProduitsActifs, type Produit, getLocalMediaUrl } from '@/lib/api'
 import { Loader2 } from 'lucide-react'
 
 export default function ProductsSection() {
@@ -140,13 +140,13 @@ export default function ProductsSection() {
                       <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                         {product.image_couverture_url && !imageError ? (
                           <Image
-                            src={product.image_couverture_url}
+                            src={getLocalMediaUrl(product.image_couverture_url) || product.image_couverture_url}
                             alt={titre}
                             fill
                             className="object-cover group-hover:scale-110 transition-transform duration-500"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             onError={() => handleImageError(product.id)}
-                            unoptimized={product.image_couverture_url.startsWith('http://105.96.71.28:9001')}
+                            unoptimized={getLocalMediaUrl(product.image_couverture_url)?.startsWith('http://105.96.71.28:9001') || product.image_couverture_url.startsWith('http://105.96.71.28:9001')}
                           />
                         ) : (
                           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary-light/10 to-primary-dark/10">

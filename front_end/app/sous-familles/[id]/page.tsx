@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Loader2, ArrowLeft } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { getSousFamilleById, type SousFamille, type ProduitFournisseur, type Catalogue } from '@/lib/api'
+import { getSousFamilleById, type SousFamille, type ProduitFournisseur, type Catalogue, getLocalMediaUrl } from '@/lib/api'
 import { FileText, Download } from 'lucide-react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
@@ -157,11 +157,11 @@ export default function SousFamilleDetail({ params }: { params: { id: string } }
                       <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                         {produit.image_url && !imageError ? (
                           <Image
-                            src={produit.image_url}
+                            src={getLocalMediaUrl(produit.image_url) || produit.image_url}
                             alt={produit.nom}
                             fill
                             className="object-cover group-hover:scale-110 transition-transform duration-300"
-                            unoptimized={produit.image_url.startsWith('http://105.96.71.28:9001')}
+                            unoptimized={getLocalMediaUrl(produit.image_url)?.startsWith('http://105.96.71.28:9001') || produit.image_url.startsWith('http://105.96.71.28:9001')}
                             onError={() => handleImageError(produit.id)}
                           />
                         ) : (
@@ -185,7 +185,7 @@ export default function SousFamilleDetail({ params }: { params: { id: string } }
                               {produit.catalogues.map((catalogue) => (
                                 <a
                                   key={catalogue.id}
-                                  href={catalogue.fichier_pdf_url}
+                                  href={getLocalMediaUrl(catalogue.fichier_pdf_url) || catalogue.fichier_pdf_url}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="inline-flex items-center space-x-1.5 sm:space-x-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-primary-light/10 hover:bg-primary-light/20 text-primary-dark rounded-lg transition-all group/catalog text-xs sm:text-sm"

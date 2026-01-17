@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ChevronRight, Loader2, ExternalLink } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { getPartenairesActifs, type Partenaire } from '@/lib/api'
+import { getPartenairesActifs, type Partenaire, getLocalMediaUrl } from '@/lib/api'
 
 export default function PartnersSection() {
   const { t } = useLanguage()
@@ -133,12 +133,12 @@ export default function PartnersSection() {
                       <div className="relative w-full h-20 sm:h-24 flex items-center justify-center">
                         {partner.logo_url ? (
                           <Image
-                            src={partner.logo_url}
+                            src={getLocalMediaUrl(partner.logo_url) || partner.logo_url}
                             alt={partner.nom}
                             fill
                             className="object-contain group-hover:scale-110 transition-transform duration-300"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            unoptimized={partner.logo_url.startsWith('http://105.96.71.28:9001')}
+                            unoptimized={getLocalMediaUrl(partner.logo_url)?.startsWith('http://105.96.71.28:9001') || partner.logo_url.startsWith('http://105.96.71.28:9001')}
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-gray-400">
@@ -211,12 +211,12 @@ export default function PartnersSection() {
                       <div className="relative w-full h-20 sm:h-24 flex items-center justify-center">
                         {partner.logo_url ? (
                           <Image
-                            src={partner.logo_url}
+                            src={getLocalMediaUrl(partner.logo_url) || partner.logo_url}
                             alt={partner.nom}
                             fill
                             className="object-contain group-hover:scale-110 transition-transform duration-300"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            unoptimized={partner.logo_url.startsWith('http://105.96.71.28:9001')}
+                            unoptimized={getLocalMediaUrl(partner.logo_url)?.startsWith('http://105.96.71.28:9001') || partner.logo_url.startsWith('http://105.96.71.28:9001')}
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-gray-400">

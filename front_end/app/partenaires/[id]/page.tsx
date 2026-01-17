@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Loader2, ArrowLeft, ChevronRight } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { getPartenaireById, type Partenaire, type Famille, type SousFamille } from '@/lib/api'
+import { getPartenaireById, type Partenaire, type Famille, type SousFamille, getLocalMediaUrl } from '@/lib/api'
 import Link from 'next/link'
 
 interface PartenaireWithFamilles extends Partenaire {
@@ -114,11 +114,11 @@ export default function PartenaireDetail({ params }: { params: { id: string } })
                 {partenaire.logo_url ? (
                   <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center bg-white rounded-2xl shadow-lg p-3 sm:p-4 flex-shrink-0">
                     <Image
-                      src={partenaire.logo_url}
+                      src={getLocalMediaUrl(partenaire.logo_url) || partenaire.logo_url}
                       alt={partenaire.nom}
                       fill
                       className="object-contain"
-                      unoptimized={partenaire.logo_url.startsWith('http://105.96.71.28:9001')}
+                      unoptimized={getLocalMediaUrl(partenaire.logo_url)?.startsWith('http://105.96.71.28:9001') || partenaire.logo_url.startsWith('http://105.96.71.28:9001')}
                     />
                   </div>
                 ) : (

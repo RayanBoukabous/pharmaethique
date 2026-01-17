@@ -2,17 +2,36 @@
  * Configuration et utilitaires pour l'API backend
  */
 
-// En production (Vercel), utiliser le proxy Next.js pour éviter les problèmes de mixed content (HTTPS -> HTTP)
-// En développement, utiliser directement l'URL du backend
-const isProduction = process.env.NODE_ENV === 'production'
-const BACKEND_BASE_URL = process.env.BACKEND_URL || 'http://105.96.71.28:9001'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://105.96.71.28:9001/api'
 
-export const API_BASE_URL = isProduction
-  ? '/api/proxy' // Proxy Next.js en production
-  : `${BACKEND_BASE_URL}/api` // URL directe en développement
-
-// URL de base du backend pour les vérifications d'images
-export const BACKEND_URL = BACKEND_BASE_URL
+/**
+ * Convertit une URL de média Vercel en URL locale si nécessaire
+ * En développement, remplace le domaine Vercel par le domaine de l'API locale
+ */
+export function getLocalMediaUrl(url: string | null | undefined): string | undefined {
+  if (!url) return undefined
+  
+  // Si l'URL contient le domaine Vercel
+  const vercelDomain = 'pharmaethique-web.vercel.app'
+  if (url.includes(vercelDomain)) {
+    // Extraire le chemin du média (tout après le domaine)
+    const urlObj = new URL(url)
+    const mediaPath = urlObj.pathname + urlObj.search
+    
+    // Vérifier si on est en développement (localhost ou si NEXT_PUBLIC_API_URL est défini)
+    const isDevelopment = typeof window !== 'undefined' && 
+      (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    
+    if (isDevelopment || process.env.NEXT_PUBLIC_API_URL) {
+      // Construire l'URL avec le domaine de l'API locale
+      const baseUrl = API_BASE_URL.replace('/api', '') // Enlever /api pour avoir la base
+      return `${baseUrl}${mediaPath}`
+    }
+  }
+  
+  // Sinon, retourner l'URL telle quelle
+  return url
+}
 
 export interface Catalogue {
   id: number
