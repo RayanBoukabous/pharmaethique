@@ -10,14 +10,18 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { getProduitById, type Produit } from '@/lib/api'
 import Link from 'next/link'
 
-interface ProduitWithPartners extends Produit {
-  partenaires: Array<{
-    id: number
-    nom: string
-    logo: string
-    logo_url: string
-    url_site_web: string
-  }>
+// Interface pour les partenaires dans la réponse API (format simplifié retourné par le backend)
+interface PartenaireSimplifie {
+  id: number
+  nom: string
+  logo: string
+  logo_url: string
+  url_site_web: string
+}
+
+// Interface pour un produit avec partenaires (override du type partenaires de Produit)
+interface ProduitWithPartners extends Omit<Produit, 'partenaires'> {
+  partenaires?: PartenaireSimplifie[]
 }
 
 export default function ProduitDetail({ params }: { params: { id: string } }) {
@@ -50,15 +54,18 @@ export default function ProduitDetail({ params }: { params: { id: string } }) {
     }
   }, [params.id])
 
+  // Type pour les propriétés communes utilisées par getTitre et getDescription
+  type ProduitTitreDescription = Pick<Produit, 'titre_fr' | 'titre_en' | 'titre_ar' | 'description_fr' | 'description_en' | 'description_ar'>
+
   // Fonction pour obtenir le titre selon la langue
-  const getTitre = (produit: Produit) => {
+  const getTitre = (produit: ProduitTitreDescription) => {
     if (language === 'ar' && produit.titre_ar) return produit.titre_ar
     if (language === 'en' && produit.titre_en) return produit.titre_en
     return produit.titre_fr
   }
 
   // Fonction pour obtenir la description selon la langue
-  const getDescription = (produit: Produit) => {
+  const getDescription = (produit: ProduitTitreDescription) => {
     if (language === 'ar' && produit.description_ar) return produit.description_ar
     if (language === 'en' && produit.description_en) return produit.description_en
     return produit.description_fr
