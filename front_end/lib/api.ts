@@ -6,7 +6,8 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://105.96.71.28:900
 
 /**
  * Convertit une URL de média Vercel en URL locale si nécessaire
- * En développement, remplace le domaine Vercel par le domaine de l'API locale
+ * En développement local uniquement, remplace le domaine Vercel par le domaine de l'API locale
+ * En production sur Vercel, retourne l'URL originale
  */
 export function getLocalMediaUrl(url: string | null | undefined): string | undefined {
   if (!url) return undefined
@@ -14,22 +15,23 @@ export function getLocalMediaUrl(url: string | null | undefined): string | undef
   // Si l'URL contient le domaine Vercel
   const vercelDomain = 'pharmaethique-web.vercel.app'
   if (url.includes(vercelDomain)) {
-    // Extraire le chemin du média (tout après le domaine)
-    const urlObj = new URL(url)
-    const mediaPath = urlObj.pathname + urlObj.search
-    
-    // Vérifier si on est en développement (localhost ou si NEXT_PUBLIC_API_URL est défini)
-    const isDevelopment = typeof window !== 'undefined' && 
+    // Vérifier si on est en développement LOCAL uniquement (localhost)
+    const isLocalDevelopment = typeof window !== 'undefined' && 
       (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     
-    if (isDevelopment || process.env.NEXT_PUBLIC_API_URL) {
+    // Seulement convertir en développement local, jamais en production
+    if (isLocalDevelopment) {
+      // Extraire le chemin du média (tout après le domaine)
+      const urlObj = new URL(url)
+      const mediaPath = urlObj.pathname + urlObj.search
+      
       // Construire l'URL avec le domaine de l'API locale
       const baseUrl = API_BASE_URL.replace('/api', '') // Enlever /api pour avoir la base
       return `${baseUrl}${mediaPath}`
     }
   }
   
-  // Sinon, retourner l'URL telle quelle
+  // Sinon, retourner l'URL telle quelle (production ou URL non-Vercel)
   return url
 }
 
