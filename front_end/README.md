@@ -60,6 +60,26 @@ front_end/
 - **Primary**: `#018276`
 - **Primary Light**: `#00AAA3`
 
+## Configuration des Variables d'Environnement
+
+Pour le déploiement sur Vercel, configurez les variables d'environnement suivantes dans les paramètres de Vercel :
+
+### Variable requise pour la production
+
+- **`BACKEND_URL`** : URL du backend Django (sans `/api` à la fin)
+  - Exemple : `http://105.96.71.28:9001`
+  - ⚠️ **Important** : Cette variable est utilisée côté serveur uniquement (pas de préfixe `NEXT_PUBLIC_`)
+  - En production, l'application utilise un proxy Next.js (`/api/proxy/*`) pour éviter les problèmes de mixed content (HTTPS → HTTP)
+  - En développement, l'application se connecte directement au backend
+
+### Comment configurer sur Vercel
+
+1. Allez dans les paramètres de votre projet Vercel
+2. Section "Environment Variables"
+3. Ajoutez `BACKEND_URL` avec la valeur `http://105.96.71.28:9001`
+4. Sélectionnez tous les environnements (Production, Preview, Development)
+5. Redéployez votre application
+
 ## Fonctionnalités
 
 - ✅ Design responsive et moderne
@@ -67,6 +87,7 @@ front_end/
 - ✅ Navigation intuitive
 - ✅ Pages complètes (Accueil, À Propos, Produits, Partenaires, Contact)
 - ✅ Optimisé pour les performances
+- ✅ Proxy API pour éviter les problèmes de mixed content en production
 
 
 

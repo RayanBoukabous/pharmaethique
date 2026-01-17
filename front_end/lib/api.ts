@@ -2,7 +2,17 @@
  * Configuration et utilitaires pour l'API backend
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://105.96.71.28:9001/api'
+// En production (Vercel), utiliser le proxy Next.js pour éviter les problèmes de mixed content (HTTPS -> HTTP)
+// En développement, utiliser directement l'URL du backend
+const isProduction = process.env.NODE_ENV === 'production'
+const BACKEND_BASE_URL = process.env.BACKEND_URL || 'http://105.96.71.28:9001'
+
+export const API_BASE_URL = isProduction
+  ? '/api/proxy' // Proxy Next.js en production
+  : `${BACKEND_BASE_URL}/api` // URL directe en développement
+
+// URL de base du backend pour les vérifications d'images
+export const BACKEND_URL = BACKEND_BASE_URL
 
 export interface Catalogue {
   id: number
