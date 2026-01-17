@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: pharma_ethique_postgres
+    volumes:
+      # Volume nommé pour persistance des données
+      # Les données seront conservées même si le container est supprimé
+      - postgres_data:/var/lib/postgresql/data
+      # Backup automatique (optionnel)
+      - ./backups:/backups
+    environment:
+      POSTGRES_DB: pharma_ethique_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    # Configuration réseau pour isolation
+    networks:
+      - pharma_network
+
+  web:
+    build: .
+    container_name: pharma_ethique_web
+    command: gunicorn --bind 0.0.0.0:8000 --workers 3 config.wsgi:application
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    ports:
+      - "8001:8000"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_HOST=db
+      - DB_NAME=pharma_ethique_db
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+    restart: unless-stopped
+    networks:
+      - pharma_network
+
+volumes:
+  # Volume nommé persistant - les données seront conservées même si le container est supprimé
+  # Ce volume Docker sera créé automatiquement et persistera les données
+  postgres_data:
+    name: pharma_ethique_postgres_data
+    driver: local
+  static_volume:
+    name: pharma_ethique_static
+    driver: local
+  media_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/media
+
+networks:
+  pharma_network:
+    driver: bridge
+

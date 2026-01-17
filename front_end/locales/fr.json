@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "accueil": "Accueil",
+    "aPropos": "À Propos",
+    "produits": "Produits & Équipements",
+    "partenaires": "Nos Partenaires",
+    "contact": "Contactez-nous"
+  },
+  "hero": {
+    "title": "Pharma Ethique,",
+    "titleHighlight": "L'expert En Diagnostic",
+    "titleEnd": "Au Laboratoire Vous Accompagne",
+    "description": "Pharma Ethique est une entreprise spécialisée en diagnostic de laboratoire offrant un accompagnement unique dans le domaine des diagnostics médicaux.",
+    "cta": "Contactez-nous"
+  },
+  "features": {
+    "title": "Pourquoi Choisir Pharma Ethique ?",
+    "subtitle": "Nous offrons des solutions complètes pour vos besoins en diagnostic de laboratoire",
+    "reactifs": {
+      "title": "Réactifs de Qualité",
+      "description": "Une gamme complète de réactifs de laboratoire certifiés et de haute qualité pour vos analyses."
+    },
+    "equipements": {
+      "title": "Équipements Professionnels",
+      "description": "Des équipements de laboratoire modernes et performants pour tous vos besoins de diagnostic."
+    },
+    "certification": {
+      "title": "Certification & Conformité",
+      "description": "Tous nos produits respectent les normes internationales et les réglementations en vigueur."
+    },
+    "accompagnement": {
+      "title": "Accompagnement Expert",
+      "description": "Une équipe d'experts à votre service pour vous conseiller et vous accompagner dans vos projets."
+    }
+  },
+  "products": {
+    "title": "Produits Et Equipements",
+    "subtitle": "Découvrez notre gamme complète de produits et équipements pour votre laboratoire",
+    "produits": {
+      "title": "Produits",
+      "description": "Réactifs et consommables de laboratoire de haute qualité"
+    },
+    "medico": {
+      "title": "Équipements Médico-Chirurgicaux",
+      "description": "Équipements professionnels pour les interventions médicales"
+    },
+    "laboratoire": {
+      "title": "Équipements De Laboratoire",
+      "description": "Machines et équipements de diagnostic de pointe"
+    },
+    "cta": "Voir Tous Nos Produits",
+    "info": "Cliquez sur un logo pour visiter le site web du partenaire"
+  },
+  "reactifs": {
+    "title": "Réactifs médicaux de haute qualité, garantissant précision et fiabilité pour soutenir l'innovation et l'excellence scientifique.",
+    "description": "Pharma Ethique s'engage à faire progresser les soins de santé en fournissant des réactifs de laboratoire médical de haute qualité avec précision et fiabilité. Nous nous concentrons sur la précision et la fiabilité, offrant une gamme complète de réactifs pour des résultats précis et une recherche innovante. Notre engagement inébranlable envers l'excellence et la satisfaction client se fait grâce à une collaboration avec les fabricants leaders.",
+    "cta": "Contactez-nous"
+  },
+  "partners": {
+    "title": "Nos Partenaires",
+    "info": "Cliquez sur un logo pour visiter le site web du partenaire",
+    "visit": "Visiter le site"
+  },
+  "footer": {
+    "company": "SARL Pharma Ethique",
+    "description": "Réactifs & Équipements de laboratoires. Votre partenaire de confiance en diagnostic médical.",
+    "links": "Liens du Site",
+    "copyright": "SARL Pharma Ethique. Tous droits réservés."
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Reagents & Laboratory Equipment. Your trusted partner in medical diagnostics.",
+    "infoTitle": "Informations de Contact",
+    "email": "Email",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "form": {
+      "name": "Nom complet",
+      "namePlaceholder": "Votre nom",
+      "email": "Email",
+      "emailPlaceholder": "votre@email.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "+33 X XX XX XX XX",
+      "message": "Message",
+      "messagePlaceholder": "Votre message...",
+      "submit": "Envoyer le message"
+    }
+  },
+  "aPropos": {
+    "title": "À Propos de Pharma Ethique",
+    "intro": "Pharma Ethique est une entreprise spécialisée en diagnostic de laboratoire offrant un accompagnement unique dans le domaine des diagnostics médicaux.",
+    "foundation": "Fondée sur les principes d'excellence, d'éthique et d'innovation, notre entreprise s'engage à fournir des solutions de qualité supérieure pour répondre aux besoins croissants du secteur de la santé.",
+    "missionTitle": "Notre Mission",
+    "mission": "Notre mission est de fournir des réactifs et équipements de laboratoire de la plus haute qualité, tout en offrant un accompagnement personnalisé à nos clients. Nous nous engageons à maintenir les plus hauts standards de qualité et de conformité réglementaire.",
+    "valuesTitle": "Nos Valeurs",
+    "values": {
+      "excellence": "Excellence : Nous visons l'excellence dans tous nos produits et services",
+      "ethique": "Éthique : Nous opérons avec intégrité et transparence",
+      "innovation": "Innovation : Nous restons à la pointe de la technologie",
+      "service": "Service Client : Votre satisfaction est notre priorité"
+    }
+  },
+  "common": {
+    "backToHome": "Retour à l'accueil",
+    "backToProducts": "Retour aux produits",
+    "backToPartners": "Retour aux partenaires",
+    "description": "Description",
+    "products": "Produits",
+    "associatedPartners": "Partenaires associés",
+    "productFamilies": "Familles de produits",
+    "noSubFamilies": "Aucune sous-famille pour le moment.",
+    "noFamilies": "Aucune famille associée à ce partenaire pour le moment.",
+    "noProducts": "Aucun produit fournisseur disponible pour cette sous-famille pour le moment.",
+    "visitWebsite": "Visiter le site web",
+    "viewFamilies": "Voir les familles",
+    "contactUs": "Nous Contacter",
+    "noImage": "Pas d'image",
+    "noLogo": "Pas de logo",
+    "catalogues": "Catalogues",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "notFound": "Non trouvé"
+  }
+}
+
+
+

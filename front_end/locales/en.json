@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "accueil": "Home",
+    "aPropos": "About Us",
+    "produits": "Products & Equipment",
+    "partenaires": "Our Partners",
+    "contact": "Contact Us"
+  },
+  "hero": {
+    "title": "Pharma Ethique,",
+    "titleHighlight": "The Expert In Diagnostic",
+    "titleEnd": "At The Laboratory Accompanies You",
+    "description": "Pharma Ethique is a company specialized in laboratory diagnostics offering unique support in the field of medical diagnostics.",
+    "cta": "Contact Us"
+  },
+  "features": {
+    "title": "Why Choose Pharma Ethique?",
+    "subtitle": "We offer complete solutions for your laboratory diagnostic needs",
+    "reactifs": {
+      "title": "Quality Reagents",
+      "description": "A complete range of certified, high-quality laboratory reagents for your analyses."
+    },
+    "equipements": {
+      "title": "Professional Equipment",
+      "description": "Modern and high-performance laboratory equipment for all your diagnostic needs."
+    },
+    "certification": {
+      "title": "Certification & Compliance",
+      "description": "All our products meet international standards and current regulations."
+    },
+    "accompagnement": {
+      "title": "Expert Support",
+      "description": "A team of experts at your service to advise and support you in your projects."
+    }
+  },
+  "products": {
+    "title": "Products And Equipment",
+    "subtitle": "Discover our complete range of products and equipment for your laboratory",
+    "produits": {
+      "title": "Products",
+      "description": "High-quality laboratory reagents and consumables"
+    },
+    "medico": {
+      "title": "Medical-Surgical Equipment",
+      "description": "Professional equipment for medical interventions"
+    },
+    "laboratoire": {
+      "title": "Laboratory Equipment",
+      "description": "State-of-the-art diagnostic machines and equipment"
+    },
+    "cta": "View All Our Products",
+    "info": "Click on a logo to visit the partner's website"
+  },
+  "reactifs": {
+    "title": "High-quality medical reagents, guaranteeing precision and reliability to support innovation and scientific excellence.",
+    "description": "Pharma Ethique is committed to advancing healthcare by providing high-quality medical laboratory reagents with precision and reliability. We focus on precision and reliability, offering a complete range of reagents for accurate results and innovative research. Our unwavering commitment to excellence and customer satisfaction is achieved through collaboration with leading manufacturers.",
+    "cta": "Contact Us"
+  },
+  "partners": {
+    "title": "Our Partners",
+    "info": "Click on a logo to visit the partner's website",
+    "visit": "Visit Website"
+  },
+  "footer": {
+    "company": "SARL Pharma Ethique",
+    "description": "Reagents & Laboratory Equipment. Your trusted partner in medical diagnostics.",
+    "links": "Site Links",
+    "copyright": "SARL Pharma Ethique. All rights reserved."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Reagents & Laboratory Equipment. Your trusted partner in medical diagnostics.",
+    "infoTitle": "Contact Information",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+33 X XX XX XX XX",
+      "message": "Message",
+      "messagePlaceholder": "Your message...",
+      "submit": "Send Message"
+    }
+  },
+  "aPropos": {
+    "title": "About Pharma Ethique",
+    "intro": "Pharma Ethique is a company specialized in laboratory diagnostics offering unique support in the field of medical diagnostics.",
+    "foundation": "Founded on the principles of excellence, ethics and innovation, our company is committed to providing superior quality solutions to meet the growing needs of the healthcare sector.",
+    "missionTitle": "Our Mission",
+    "mission": "Our mission is to provide the highest quality laboratory reagents and equipment, while offering personalized support to our clients. We are committed to maintaining the highest standards of quality and regulatory compliance.",
+    "valuesTitle": "Our Values",
+    "values": {
+      "excellence": "Excellence: We strive for excellence in all our products and services",
+      "ethique": "Ethics: We operate with integrity and transparency",
+      "innovation": "Innovation: We remain at the forefront of technology",
+      "service": "Customer Service: Your satisfaction is our priority"
+    }
+  },
+  "common": {
+    "backToHome": "Back to Home",
+    "backToProducts": "Back to Products",
+    "backToPartners": "Back to Partners",
+    "description": "Description",
+    "products": "Products",
+    "associatedPartners": "Associated Partners",
+    "productFamilies": "Product Families",
+    "noSubFamilies": "No sub-families at the moment.",
+    "noFamilies": "No families associated with this partner at the moment.",
+    "noProducts": "No supplier products available for this sub-family at the moment.",
+    "visitWebsite": "Visit Website",
+    "viewFamilies": "View Families",
+    "contactUs": "Contact Us",
+    "noImage": "No Image",
+    "noLogo": "No Logo",
+    "catalogues": "Catalogues",
+    "loading": "Loading...",
+    "error": "Error",
+    "notFound": "Not Found"
+  }
+}
+
+
+
